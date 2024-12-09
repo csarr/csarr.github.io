@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>254</fr:anchor><fr:addr
+type="user">cs-000G</fr:addr><fr:route>cs-000G.xml</fr:route><fr:title
+text="Mesure et intégration">Mesure et intégration</fr:title><fr:taxon>Note</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>12</fr:month><fr:day>8</fr:day></fr:date><fr:authors /><fr:meta
+name="venue"><fr:p>Tribus, mesures. Fonctions mesurables. Existence et unicité de la mesure de Lebesgue : mesures extérieures, lemme des classes monotones. Intégrale d'une fonction mesurable positive : fonctions étagées, théorème de convergence monotone. Fonctions intégrables, théorème de convergence dominée. Continuité et dérivabilité des intégrales à paramètres. Mesure produit, théorèmes de Fubini. Changement de variables.</fr:p></fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter /></fr:tree>

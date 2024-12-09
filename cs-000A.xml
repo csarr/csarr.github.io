@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>255</fr:anchor><fr:addr
+type="user">cs-000A</fr:addr><fr:route>cs-000A.xml</fr:route><fr:title
+text="Topologie générale">Topologie générale</fr:title><fr:taxon>Note</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>12</fr:month><fr:day>8</fr:day></fr:date><fr:authors /><fr:meta
+name="venue"><fr:p>Espaces métriques, espaces topologiques, fonctions continues. Du neuf avec du vieux : topologie produit, topologie quotient. Compacité : théorème de Bolzano-Weierstrass, théorème de Tychonoff, compactification. Applications de la compacité : théorème des bornes atteintes, théorème de Heine, théorème d'Ascoli. Connexité, connexité par arcs. Complétude : théorème du point fixe. Axiomes de séparation, de dénombrabilité : théorème de métrisabilité d'Urysohn, lemme d'Urysohn, théorème d'extension de Tietze. Théorème de Baire.</fr:p></fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter /></fr:tree>

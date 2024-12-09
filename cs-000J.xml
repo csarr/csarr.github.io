@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>245</fr:anchor><fr:addr
+type="user">cs-000J</fr:addr><fr:route>cs-000J.xml</fr:route><fr:title
+text="Analyse complexe">Analyse complexe</fr:title><fr:taxon>Note</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>12</fr:month><fr:day>9</fr:day></fr:date><fr:authors /><fr:meta
+name="venue"><fr:p>Fonctions holomorphes, relations de Cauchy-Riemann. Intégrale curviligne, formule intégrale de Cauchy. Analycité des fonctions holomorphes. Principe des zéros isolés, principe du maximum, théorème de Liouville. Singularités effaçables, pôles, singularités essentielles : théorèmes de Riemann et de Casorati-Weierstrass. Fonctions méromorphes, séries de Laurent. Théorème des résidus. Théorèmes de factorisation de Weierstrass, de Hadamard. Factorisations du sinus, du cosinus. Application : calcul de <fr:tex
+display="inline"><![CDATA[\zeta (2k)]]></fr:tex>.</fr:p></fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter /></fr:tree>

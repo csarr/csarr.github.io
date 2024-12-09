@@ -1,0 +1,886 @@
+/* SPDX-License-Identifier: CC0-1.0 */
+
+.katex {
+  font-size: 1.15em !important;
+ }
+ 
+ /* inria-sans-300 - latin_latin-ext */
+ @font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Inria Sans';
+   font-style: normal;
+   font-weight: 300;
+   src: url('fonts/inria-sans-v14-latin_latin-ext-300.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+ }
+ 
+ /* inria-sans-300italic - latin_latin-ext */
+ @font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Inria Sans';
+   font-style: italic;
+   font-weight: 300;
+   src: url('fonts/inria-sans-v14-latin_latin-ext-300italic.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+ }
+ 
+ /* inria-sans-regular - latin_latin-ext */
+ @font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Inria Sans';
+   font-style: normal;
+   font-weight: 400;
+   src: url('fonts/inria-sans-v14-latin_latin-ext-regular.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+ }
+ 
+ /* inria-sans-italic - latin_latin-ext */
+ @font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Inria Sans';
+   font-style: italic;
+   font-weight: 400;
+   src: url('fonts/inria-sans-v14-latin_latin-ext-italic.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+ }
+ 
+ /* inria-sans-700 - latin_latin-ext */
+ @font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Inria Sans';
+   font-style: normal;
+   font-weight: 700;
+   src: url('fonts/inria-sans-v14-latin_latin-ext-700.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+ }
+ 
+ /* inria-sans-700italic - latin_latin-ext */
+ @font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Inria Sans';
+   font-style: italic;
+   font-weight: 700;
+   src: url('fonts/inria-sans-v14-latin_latin-ext-700italic.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+ }
+ 
+ :root {
+   --content-gap: 15px;
+   --radius: 5px;
+ }
+ 
+ h1 {
+   color: var(--green)
+ }
+ h2 {
+   color : var(--aqua)
+ }
+ 
+ h3 {
+   color : var(--blue)
+ }
+ 
+ h4 {
+   color : var(--purple)
+ }
+ h5 {
+   color : var(--red)
+ }
+ 
+ h6 {
+   color: var(--yellow)
+ }
+ 
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+   line-height: 1.2;
+   margin-bottom: 0;
+ }
+ 
+ h5,
+ h6,
+ p {
+   margin-top: 0;
+ }
+ 
+ h1,
+ h2,
+ h3,
+ h4 {
+   margin-top: .5em;
+ }
+ 
+ pre,
+ img,
+ .katex-display,
+ section,
+ center {
+   overflow-y: hidden;
+ }
+ 
+ pre {
+   border-radius: var(--radius);
+   background-color: var(--hover-modifier);
+   padding: .5em;
+   font-size: 11pt;
+   margin-top: 0em;
+   overflow-x: auto;
+   white-space: pre-wrap;
+   white-space: -moz-pre-wrap;
+   white-space: -pre-wrap;
+   white-space: -o-pre-wrap;
+   word-wrap: break-word;
+   font-family: "Recursive";
+   font-variation-settings: "MONO" 1;
+ }
+ 
+ code {
+   border-radius: var(--radius);
+   background-color: var(--hover-modifier);
+   padding: 0.2em;
+   font-size: 0.9em;
+ }
+ 
+ body {
+   font-family: "Recursive";
+   font-size: 12pt;
+   line-height: 1.55;
+ }
+ 
+ math {
+  font-size: 1.12em;
+ }
+ 
+ mrow:hover {
+  background-color: var(--hover-modifier);
+ }
+ 
+ .logo {
+   font-weight: 600;
+   font-size: 24px;
+ }
+ 
+ .logo a {
+   color: #666;
+   text-decoration: none;
+ }
+ 
+ .logo a:hover {
+   color: #aaa;
+ }
+ 
+ .block.hide-metadata>details>summary>header>.metadata {
+   display: none;
+ }
+ 
+ article>section>details>summary>header>h1>.taxon {
+   display: block;
+   font-size: .9em;
+   color: var(--grey1);
+   padding-bottom: 5pt;
+ }
+ 
+ section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+ section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+   display: none;
+ }
+ 
+ footer>section {
+   margin-bottom: 1em;
+ }
+ 
+ footer h2 {
+   font-size: 14pt;
+ }
+ 
+ .metadata>address {
+   display: inline;
+ }
+ 
+ @media only screen and (max-width: 1000px) {
+   body {
+     margin-top: 1em;
+     margin-left: .5em;
+     margin-right: .5em;
+     transition: ease all .2s;
+   }
+ 
+   #grid-wrapper>nav {
+     display: none;
+     transition: ease all .2s;
+   }
+ }
+ 
+ @media only screen and (min-width: 1000px) {
+   body {
+     margin-top: 2em;
+     margin-left: 2em;
+     transition: ease all .2s;
+   }
+ 
+   #grid-wrapper {
+     display: grid;
+     grid-template-columns: 90ex;
+   }
+ }
+ 
+ body>header {
+   margin-bottom: 2em;
+ }
+ 
+ #grid-wrapper>article {
+   max-width: 90ex;
+   margin-right: auto;
+   grid-column: 1;
+ }
+ 
+ #grid-wrapper>nav {
+   grid-column: 2;
+ }
+ 
+ details>summary>header {
+   display: inline;
+ }
+ 
+ a.heading-link {
+   box-shadow: none;
+ }
+ 
+ details h1 {
+   font-size: 13pt;
+   display: inline;
+ }
+ 
+ section .block[data-taxon] details>summary>header>h1 {
+   font-size: 12pt;
+ }
+ 
+ span.taxon {
+   color: var(--grey2);
+   font-weight: 600;
+ }
+ 
+ 
+ .link-list>section>details>summary>header h1 {
+   font-size: 12pt;
+ }
+ 
+ 
+ article>section>details>summary>header>h1 {
+   font-size: 2em;
+   font-variation-settings: "CASL" 1;
+   font-family: "Recursive";
+   color: var(--green)
+ }
+ 
+ details>summary {
+   list-style-type: none;
+ }
+ 
+ details>summary::marker,
+ details>summary::-webkit-details-marker {
+   display: none;
+ }
+ 
+ article>section>details>summary>header {
+   display: block;
+   margin-bottom: .5em;
+ }
+ 
+ section.block>details {
+   margin-bottom: 0.4em;
+ }
+ 
+ 
+ section.block>details[open] {
+   margin-bottom: 1em;
+ }
+ 
+ 
+ .link-list>section.block>details {
+   margin-bottom: .25em;
+ }
+ 
+ nav#toc {
+   margin-left: 1em;
+ }
+ 
+ nav#toc h1 {
+   margin-top: 0;
+   font-size: 16pt;
+ }
+ 
+ nav#toc,
+ nav#toc a {
+   color: var(--grey2);
+ }
+ 
+ nav#toc .link {
+  box-shadow: none;
+  text-decoration: none;
+ }
+ 
+ nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+ }
+ 
+ nav#toc h2 {
+   font-size: 1.1em;
+ }
+ 
+ nav#toc ul {
+   list-style-type: none;
+ }
+ 
+ nav#toc li > ul {
+  padding-left: 1em;
+ }
+ 
+ nav#toc li {
+  list-style-position: inside;
+ }
+ 
+ .block {
+   border-radius: var(--radius)
+ }
+ 
+ .block:hover {
+   background-color: var(--hover-modifier);
+ }
+ 
+ .block.highlighted {
+   border-style: solid;
+   border-width: 1pt;
+ }
+ 
+ .highlighted {
+   background-color: var(--bg-yellow);
+   border-color: #ccc;
+ }
+ 
+ .highlighted:hover {
+   background-color: var(--bg-orange);
+   border-color: #aaa;
+ }
+ 
+ .slug,
+ .doi,
+ .orcid {
+   color: var(--grey2);
+   font-weight: 200;
+ }
+ 
+ .edit-button {
+   color: var(--grey2);
+   font-weight: 200;
+ }
+ 
+ .block {
+   padding-left: 5px;
+   padding-right: 10px;
+   padding-bottom: 2px;
+   border-radius: 5px;
+ }
+ 
+ .link.external {
+   text-decoration: underline;
+ }
+ 
+ a.link.local,
+ .link.local a,
+ a.slug {
+   box-shadow: none;
+   text-decoration-line: underline;
+   text-decoration-style: dotted;
+  }
+ 
+ ninja-keys::part(ninja-action) {
+   white-space: nowrap;
+ }
+ 
+ body {
+   hyphens: auto;
+ }
+ 
+ table {
+   margin-bottom: 1em;
+ }
+ 
+ table.macros {
+   overflow-x: visible;
+   overflow-y: visible;
+   font-size: 0.9em;
+ }
+ 
+ table.macros td {
+   padding-left: 5pt;
+   padding-right: 15pt;
+   vertical-align: baseline;
+ }
+ 
+ th {
+   text-align: left;
+ }
+ 
+ th,
+ td {
+   padding: 0 15px;
+   vertical-align: top;
+ }
+ 
+ td.macro-name,
+ td.macro-body {
+   white-space: nowrap;
+ }
+ 
+ td.macro-doc {
+   font-size: .9em;
+ }
+ 
+ .enclosing.macro-scope>.enclosing {
+   border-radius: 2px;
+ }
+ 
+ .enclosing.macro-scope>.enclosing:hover {
+   background-color: var(--hover-modifier);
+ }
+ 
+ [aria-label][role~="tooltip"]::after {
+   font-family: "Recursive";
+ }
+ 
+ .tooltip {
+   position: relative;
+ }
+ 
+ .inline.tooltip {
+   display: inline-block;
+ }
+ 
+ .display.tooltip {
+   display: block;
+ }
+ 
+ 
+ /* The tooltip class is applied to the span element that is the tooltip */
+ 
+ .tooltip .tooltiptext {
+   visibility: hidden;
+   white-space: nowrap;
+   min-width: fit-content;
+   background-color: var(--bg-dim);
+   color: var(--fg);
+   padding-left: 5px;
+   padding-top: 5px;
+   padding-right: 10px;
+   border-radius: 6px;
+   position: absolute;
+   z-index: 1;
+   top: 100%;
+   left: 50%;
+   margin-left: -60px;
+   opacity: 0;
+   transition: opacity 0.3s;
+ }
+ 
+ .tooltip .tooltiptext::after {
+   content: "";
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   margin-left: -5px;
+   border-width: 5px;
+ }
+ 
+ 
+ /* Show the tooltip */
+ 
+ .tooltip:hover .tooltiptext {
+   visibility: visible;
+   opacity: 1;
+ }
+ 
+ .tooltiptext a {
+   color: var(--green)
+ }
+ 
+ .macro-doc {
+   font-style: italic;
+ }
+ 
+ .macro-name {
+   white-space: nowrap;
+ }
+ 
+ .macro-is-private {
+   color: var(--secondary);
+ }
+ 
+ blockquote {
+   border-inline-start: 1px solid var(--secondary);
+ }
+ 
+ a.slug:hover,
+ a.bullet:hover,
+ .edit-button:hover,
+ .link:hover {
+   background-color: var(--hover-modifier);
+ }
+ 
+ .link {
+  cursor: pointer;
+ }
+ 
+ a {
+   color: var(--green);
+   text-decoration: inherit;
+ }
+ 
+ .nowrap {
+   white-space: nowrap;
+ }
+ 
+ .nocite {
+   display: none
+ }
+ 
+ blockquote {
+   font-style: italic;
+ }
+ 
+ 
+ 
+ address {
+   display: inline;
+ }
+ 
+ 
+ .metadata ul {
+   padding-left: 0;
+   display: inline;
+ }
+ 
+ .metadata li::after {
+   content: " · ";
+ }
+ 
+ .metadata li:last-child::after {
+   content: "";
+ }
+ 
+ .metadata ul li {
+   display: inline
+ }
+ 
+ img {
+   object-fit: cover;
+   max-width: 100%;
+ }
+ 
+ figure {
+   text-align: center;
+ }
+ 
+ figcaption {
+   font-style: italic;
+   padding: 3px;
+ }
+ 
+ mark {
+   background-color: var(--bg-yellow);
+ }
+ 
+ hr {
+   margin-top: 10px;
+   margin-bottom: 20px;
+   background-color: var(--bg4);
+   border: 0 none;
+   width: 100%;
+   height: 2px;
+ }
+ 
+ ul, ol {
+  padding-bottom: .5em;
+ }
+ 
+ ol {
+  list-style-type: decimal;
+ }
+ 
+ ol li ol {
+  list-style-type: lower-alpha;
+ }
+ 
+ ol li ol li ol {
+  list-style-type: lower-roman;
+ }
+ 
+ .error, .info {
+   border-radius: 4pt;
+   padding-left: 3pt;
+   padding-right: 3pt;
+   padding-top: 1pt;
+   padding-bottom: 2pt;
+   font-weight: bold;
+ }
+ 
+ .error {
+  background-color: var(--bg-red);
+  color: var(--fg);
+ }
+ 
+ 
+ .info {
+  background-color: var(--bg3);
+  color: var(--fg);
+ }
+ 
+ .slug[href="blog.xml"], .slug[href="notes.xml"] {
+   position: absolute;
+   transform: scale(7);
+   color: var(--hover-modifier);
+   font-weight: 900;
+   left: 550px;
+   z-index: -1;
+   pointer-events: none;
+   text-decoration: none;
+ }
+ 
+ .block[data-taxon="Billet"] .metadata li::after, .block[data-taxon="Note"] .metadata li::after {
+   display: none;
+ }
+ 
+ body {
+  background: var(--bg1);
+  color: var(--fg);
+  --bg-dim: var(--bg2);
+  --bg0: #FDF6E3;
+  --bg1: #F4F0D9;
+  --bg2: #EFEBD4;
+  --bg3: #E6E2CC;
+  --bg4: #E0DCC7;
+  --bg5: #BDC3AF;
+  --bg-red: #FBE3DA;
+  --bg-green: #8DA10140;
+  --bg-blue: #E9F0E9;
+  --bg-yellow: #FAEDCD;
+  --fg: #5C6A72;
+  --red: #F85552;
+  --orange: #F57D26;
+  --yellow: #DFA000;
+  --green: #8DA101;
+  --aqua: #35A77C;
+  --blue: #3A94C5;
+  --purple: #DF69BA;
+  --grey0: #A6B0A0;
+  --grey1: #839F91;
+  --grey2: #829181;
+  --hover-modifier: #3A94C520
+}
+
+ body.dark-theme {
+   background: var(--bg1);
+   color: var(--fg);
+   --bg-dim: #232A2E;
+   --bg0: #2D353B;
+   --bg1: #343F44;
+   --bg2: #3D484D;
+   --bg3: #475258;
+   --bg4: #4F585E;
+   --bg5: #56635f;
+   --bg-red: #543A48;
+   --bg-orange: #514045;
+   --bg-green: #425047;
+   --bg-blue: #3A515D;
+   --bg-yellow: #4D4C43;
+   --fg: #D3C6AA;
+   --red: #E67E80;
+   --orange: #E69875;
+   --yellow: #DBBC7F;
+   --green: #A7C080;
+   --aqua: #83C092;
+   --blue: #7FBBB3;
+   --purple: #D699B6;
+   --grey0: #7A8478;
+   --grey1: #859289;
+   --grey2: #9DA9A0;
+   --hover-modifier: #3A515D60
+ }
+ 
+ 
+ section section[data-taxon="Billet"] a.slug, section section[data-taxon="Note"] a.slug{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   padding-left: calc(100vw + 5px);
+   transform: translateX(-100vw);
+   padding-top: 2px;
+ }
+ section section[data-taxon="Billet"], section section[data-taxon="Note"] {
+   position: relative;
+   overflow: hidden;
+ }
+ section section[data-taxon="Billet"] a.slug:hover, section section[data-taxon="Note"] a.slug:hover {
+   background: transparent;
+ }
+ 
+ 
+ #neofetch {
+   background: var(--bg1);
+   width: fit-content;
+   border-radius: 10px;
+   position: relative;
+   overflow: visible;
+   position: absolute;
+   top: calc(50% - 355px);
+   left: calc(50% - 785px);
+ }
+ .dark-theme #home {
+   background: var(--bg-dim);
+ }
+
+ #home {
+  background: var(--bg-green);
+ }
+
+
+ #neofetch::before {
+   content: 'x';
+   position: absolute;
+   right: 12px;
+   font-size: x-large;
+   top: 3px;
+   color: var(--red);
+   transform: scaleX(1.1);
+ }
+ 
+ .blink {
+   animation: blinker 1s step-start infinite;
+ }
+ 
+ @keyframes blinker {
+   50% {
+     opacity: 0;
+   }
+ }
+ 
+ 
+ #dmenu {
+   position: absolute;
+   background: var(--bg2);
+   left: 420px;
+   top: 290px;
+   width: 730px;
+   font-variation-settings: "MONO" 0;
+   font-family: "Recursive";
+   border-radius: 8px;
+ }
+ #dmenu p, #dmenu a {
+   background: var(--bg3);
+   margin: 8px;
+   padding: 5px 8px;
+   border-radius: 5px;
+   display: block;
+   color: var(--fg)
+ }
+ 
+ #dmenu a:hover {
+   background: var(--bg-green);
+ }
+ 
+ #dmenu p {
+   background: var(--bg1);
+ }
+
+ @font-face {
+  font-family: 'Recursive';
+  src: url('fonts/Recursive_VF_1.085.woff2');
+}
+
+section[data-taxon="Billet"] .metadata ul li:first-child, section[data-taxon="Note"] .metadata ul li:first-child {
+  color: var(--grey0)
+}
+
+#home .theme-toggle {
+  position: absolute;
+  right: 24px;
+}
+
+.logo .theme-toggle {
+  padding-left: 10px;
+  color: #666
+}
+
+@media (max-width: 750px) {
+  #dmenu {
+    width: 90%;
+  }
+  #neofetch {left: calc(2.5% - 420px);width: 100%; background: transparent;color: transparent;}
+  font {display: none}
+  #neofetch::before {display:none}
+}
+
+body.dark-theme ninja-keys {
+	--ninja-width: 640px;
+	--ninja-backdrop-filter: none;
+	--ninja-overflow-background: var(--hover-modifier);
+	--ninja-text-color: var(--fg);
+	--ninja-font-size: 16px;
+	--ninja-top: 20%;
+	--ninja-key-border-radius: 0.25em;
+	--ninja-accent-color: var(--green);
+	--ninja-secondary-background-color: var(--bg2);
+	--ninja-secondary-text-color: var(--grey2);
+	--ninja-selected-background: var(--bg-green);
+	--ninja-icon-color: var(--ninja-secondary-text-color);
+	--ninja-icon-size: 1.2em;
+	--ninja-separate-border: 1px solid var(--ninja-secondary-background-color);
+	--ninja-modal-background: var(--bg1);
+	--ninja-modal-shadow: rgb(0 0 0 / 50%) 0px 16px 70px;
+	--ninja-actions-height: 300px;
+	--ninja-group-text-color: var(--green);
+	--ninja-footer-background: var(--hover-modifier);
+	--ninja-placeholder-color: var(--grey2);
+	font-size: var(--ninja-font-size);
+	--ninja-z-index: 1;
+}
+
+ninja-keys {
+	--ninja-width: 640px;
+	--ninja-backdrop-filter: none;
+	--ninja-overflow-background: var(--hover-modifier);
+	--ninja-text-color: var(--fg);
+	--ninja-font-size: 16px;
+	--ninja-top: 20%;
+	--ninja-key-border-radius: 0.25em;
+	--ninja-accent-color: var(--green);
+	--ninja-secondary-background-color: var(--bg2);
+	--ninja-secondary-text-color: var(--grey2);
+	--ninja-selected-background: var(--bg-green);
+	--ninja-icon-color: var(--ninja-secondary-text-color);
+	--ninja-icon-size: 1.2em;
+	--ninja-separate-border: 1px solid var(--ninja-secondary-background-color);
+	--ninja-modal-background: var(--bg1);
+	--ninja-modal-shadow: rgb(0 0 0 / 50%) 0px 16px 70px;
+	--ninja-actions-height: 300px;
+	--ninja-group-text-color: var(--green);
+	--ninja-footer-background: var(--hover-modifier);
+	--ninja-placeholder-color: var(--grey1);
+	font-size: var(--ninja-font-size);
+	--ninja-z-index: 1;
+}

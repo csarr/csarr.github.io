@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>249</fr:anchor><fr:addr
+type="user">cs-000L</fr:addr><fr:route>cs-000L.xml</fr:route><fr:title
+text="Surfaces de Riemann">Surfaces de Riemann</fr:title><fr:taxon>Note</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>12</fr:month><fr:day>9</fr:day></fr:date><fr:authors /><fr:meta
+name="venue"><fr:p>Applications multivaluées : monodromie, surface de Riemann d'une application multivaluée. Courbes algébriques complexes affines et projectives. Applications holomorphes entre surfaces de Riemann et revêtements ramifiés. Théorème d'existence de Riemann. Classification des surfaces de Riemann compactes : genre et caractéristique d'Euler. Formule de Riemann-Hurwitz. Application : genre des courbes hyperelliptiques. Théorème d'uniformisation. Exemple : uniformisation des courbes elliptiques, application des périodes.</fr:p></fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter /></fr:tree>

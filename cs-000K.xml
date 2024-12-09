@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>246</fr:anchor><fr:addr
+type="user">cs-000K</fr:addr><fr:route>cs-000K.xml</fr:route><fr:title
+text="Corps et théorie de Galois">Corps et théorie de Galois</fr:title><fr:taxon>Note</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>12</fr:month><fr:day>9</fr:day></fr:date><fr:authors /><fr:meta
+name="venue"><fr:p>Corps, extensions de corps. Extensions algébriques, transcendantes. Multiplicativité du degré. Corps de rupture, corps de décomposition, clotûre algébrique. Applications : nombres constructibles, théorème de Gauss-Wantzel. Extensions séparables, corps parfaits, théorème de l'élément primitif. Extensions normales et galoisiennes. Théorème fondamental de la théorie de Galois. Résolubilité par radicaux : théorème de Kummer, groupes résolubles, théorème d'Abel-Ruffini.</fr:p></fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter /></fr:tree>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>253</fr:anchor><fr:addr
+type="user">cs-000F</fr:addr><fr:route>cs-000F.xml</fr:route><fr:title
+text="Espaces fonctionnels">Espaces fonctionnels</fr:title><fr:taxon>Note</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>12</fr:month><fr:day>8</fr:day></fr:date><fr:authors /><fr:meta
+name="venue"><fr:p>Espaces vectoriels normés, applications linéaires continues, théorème de Stone-Weierstrass, théorème de Riesz. Espaces de Banach : théorèmes de Banach-Steinhaus, de l'application ouverte, du graphe fermé. Espaces de Hilbert : bases hilbertiennes, projection sur un convexe fermé, supplémentaires orthogonaux, théorème de représentation de Riesz. Espaces <fr:tex
+display="inline"><![CDATA[L^p]]></fr:tex> : inégalités de Hölder et de Minkowski, complétude, résultats de densité, dualité. Espaces de Sobolev. Séries de Fourier des fonctions <fr:tex
+display="inline"><![CDATA[L^1]]></fr:tex> périodiques. Convergence de la série. Lien entre régularité et décroissance rapide des coefficients. Application à l'équation de la chaleur. Produit de convolution et transformée de Fourier des fonctions <fr:tex
+display="inline"><![CDATA[L^1]]></fr:tex>. Formule d'inversion, théorème de Plancherel.</fr:p></fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter /></fr:tree>

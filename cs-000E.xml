@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>252</fr:anchor><fr:addr
+type="user">cs-000E</fr:addr><fr:route>cs-000E.xml</fr:route><fr:title
+text="Analyse réelle">Analyse réelle</fr:title><fr:taxon>Note</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>12</fr:month><fr:day>8</fr:day></fr:date><fr:authors /><fr:meta
+name="venue"><fr:p>Construction de <fr:tex
+display="inline"><![CDATA[\mathbb {R}]]></fr:tex> et propriétés topologiques fondamentales. Fonctions réelles : théorème des valeurs intermédiaires, théorème des bornes atteintes, théorème de la limite monotone. Dérivation : formules, théorème de Rolle, accroissements finis, études de variation. Formules de Taylor et développements limités. Suites et séries de fonctions, théorèmes de Weierstrass.</fr:p></fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter /></fr:tree>

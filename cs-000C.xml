@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="default.xsl"?>
+<fr:tree
+toc="true"
+numbered="true"
+show-heading="true"
+show-metadata="true"
+expanded="true"
+root="false"
+xmlns:fr="http://www.jonmsterling.com/jms-005P.xml"><fr:frontmatter><fr:anchor>250</fr:anchor><fr:addr
+type="user">cs-000C</fr:addr><fr:route>cs-000C.xml</fr:route><fr:title
+text="Algèbre commutative">Algèbre commutative</fr:title><fr:taxon>Note</fr:taxon><fr:date><fr:year>2024</fr:year><fr:month>12</fr:month><fr:day>8</fr:day></fr:date><fr:authors /><fr:meta
+name="venue"><fr:p>Anneaux, morphismes d'anneaux. Idéaux : idéaux premiers, maximaux. Existence d'idéaux maximaux. Du neuf avec du vieux : anneaux de polynômes, quotients, localisation. Théorème chinois. Anneaux euclidiens, factoriels, principaux.</fr:p></fr:meta></fr:frontmatter><fr:mainmatter /><fr:backmatter /></fr:tree>
