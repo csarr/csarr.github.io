@@ -183,12 +183,14 @@
    display: none;
  }
  
+
+  
  article>section>details>summary>header>h1>.taxon {
-   display: block;
-   font-size: .9em;
-   color: var(--grey1);
-   padding-bottom: 5pt;
- }
+  display: block;
+  font-size: .6em;
+  color: var(--grey1);
+  padding-bottom: 0;
+}
  
  section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
  section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
