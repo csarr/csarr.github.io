@@ -5,51 +5,51 @@
   xmlns:f="http://www.jonmsterling.com/jms-005P.xml">
 
   <xsl:template match="f:month[.='1']">
-    <xsl:text>janvier</xsl:text>
+    <xsl:text>janvier </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='2']">
-    <xsl:text>février</xsl:text>
+    <xsl:text>février </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='3']">
-    <xsl:text>mars</xsl:text>
+    <xsl:text>mars </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='4']">
-    <xsl:text>avril</xsl:text>
+    <xsl:text>avril </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='5']">
-    <xsl:text>mai</xsl:text>
+    <xsl:text>mai </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='6']">
-    <xsl:text>juin</xsl:text>
+    <xsl:text>juin </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='7']">
-    <xsl:text>juillet</xsl:text>
+    <xsl:text>juillet </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='8']">
-    <xsl:text>août</xsl:text>
+    <xsl:text>août </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='9']">
-    <xsl:text>septembre</xsl:text>
+    <xsl:text>septembre </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='10']">
-    <xsl:text>octobre</xsl:text>
+    <xsl:text>octobre </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='11']">
-    <xsl:text>novembre</xsl:text>
+    <xsl:text>novembre </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:month[.='12']">
-    <xsl:text>décembre</xsl:text>
+    <xsl:text>décembre </xsl:text>
   </xsl:template>
 
   <xsl:template match="f:year">
@@ -64,7 +64,6 @@
     <xsl:apply-templates select="f:day" />
     <xsl:text>&#160;</xsl:text>
     <xsl:apply-templates select="f:month" />
-    <xsl:text>&#160;</xsl:text>
     <xsl:apply-templates select="f:year" />
   </xsl:template>
 
