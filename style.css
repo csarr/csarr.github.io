@@ -221,6 +221,10 @@
      display: none;
      transition: ease all .2s;
    }
+
+   .slug[href="blog.xml"], .slug[href="notes.xml"] {
+    display: none;
+  }
  }
  
  @media only screen and (min-width: 1000px) {
