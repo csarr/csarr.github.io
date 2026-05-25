@@ -8,7 +8,10 @@ from pathlib import Path
 from dashboard import generate_dashboard
 
 
-DEFAULT_DB = Path("agreg.db")
+BASE_DIR = Path(__file__).resolve().parent
+DEFAULT_DB = BASE_DIR / "agreg.db"
+DEFAULT_TEMPLATE = BASE_DIR / "template.html"
+DEFAULT_OUTPUT = BASE_DIR / "index.html"
 
 
 STATUS_NAMES = {
@@ -368,8 +371,8 @@ def main() -> None:
     p.add_argument("dev_id", type=int)
 
     p = sub.add_parser("dashboard")
-    p.add_argument("--template", type=Path, default=Path("template.html"))
-    p.add_argument("--output", type=Path, default=Path("index.html"))
+    p.add_argument("--template", type=Path, default=DEFAULT_TEMPLATE)
+    p.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
 
     args = parser.parse_args()
 
