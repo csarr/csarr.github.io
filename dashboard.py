@@ -140,6 +140,110 @@ def render_template(template: str, data: dict[str, str]) -> str:
     return rendered
 
 
+def render_details_page(title: str, headers: tuple[str, str, str], rows: str) -> str:
+    return f"""<!DOCTYPE html>
+<html lang=\"fr\">
+<head>
+  <meta charset=\"utf-8\">
+  <title>{html.escape(title)} · Dashboard agrégation</title>
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+  <style>
+    :root {{
+      --bg: #f4f1ea;
+      --card: #fffaf0;
+      --ink: #1f2933;
+      --muted: #6b7280;
+      --border: #e5dcc9;
+      --s1: #9ca3af;
+      --s2: #a70a6b;
+      --s3: #f59e0b;
+      --s4: #d3d950;
+      --s5: #427525;
+    }}
+    body {{ margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; background: var(--bg); color: var(--ink); }}
+    main {{ width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0; }}
+    h1 {{ margin: 0 0 16px; letter-spacing: -0.03em; }}
+    .back-link {{ display: inline-block; margin-bottom: 18px; color: #1d4ed8; text-decoration: none; }}
+    .card {{ background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 20px; }}
+    table {{ width: 100%; border-collapse: collapse; }}
+    th, td {{ padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }}
+    th {{ color: var(--muted); font-weight: 600; }}
+    .status-dot {{ width: 12px; height: 12px; border-radius: 999px; display: inline-block; vertical-align: middle; }}
+    .status-1 {{ background: var(--s1); }}
+    .status-2 {{ background: var(--s2); }}
+    .status-3 {{ background: var(--s3); }}
+    .status-4 {{ background: var(--s4); }}
+    .status-5 {{ background: var(--s5); }}
+  </style>
+</head>
+<body>
+  <main>
+    <a class=\"back-link\" href=\"../index.html\">← Retour au dashboard</a>
+    <h1>{html.escape(title)}</h1>
+    <section class=\"card\">
+      <table>
+        <thead>
+          <tr>
+            <th>{html.escape(headers[0])}</th>
+            <th>{html.escape(headers[1])}</th>
+            <th>{html.escape(headers[2])}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
+def generate_lecons_page(conn: sqlite3.Connection, output_path: Path) -> Path:
+    lecons = conn.execute(
+        """
+        SELECT id, name, status
+        FROM lecons
+        ORDER BY id
+        """
+    ).fetchall()
+
+    rows = "\n".join(
+        f"<tr><td>{int(row['id'])}</td><td>{html.escape(str(row['name']))}</td><td><span class=\"status-dot {STATUS_CLASSES[int(row['status'])]}\" title=\"{html.escape(STATUS_LABELS[int(row['status'])])}\"></span></td></tr>"
+        for row in lecons
+    )
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        render_details_page("Leçons", ("Numéro", "Titre", "Statut"), rows),
+        encoding="utf-8",
+    )
+    return output_path
+
+
+def generate_devs_page(conn: sqlite3.Connection, output_path: Path) -> Path:
+    devs = conn.execute(
+        """
+        SELECT id, name, status
+        FROM devs
+        ORDER BY id
+        """
+    ).fetchall()
+
+    rows = "\n".join(
+        f"<tr><td>{int(row['id'])}</td><td>{html.escape(str(row['name']))}</td><td><span class=\"status-dot {STATUS_CLASSES[int(row['status'])]}\" title=\"{html.escape(STATUS_LABELS[int(row['status'])])}\"></span></td></tr>"
+        for row in devs
+    )
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        render_details_page("Développements", ("ID", "Titre", "Statut"), rows),
+        encoding="utf-8",
+    )
+    return output_path
+
+
 def generate_dashboard(
     db_path: Path = Path("agreg.db"),
     template_path: Path = Path("template.html"),
@@ -152,5 +256,7 @@ def generate_dashboard(
     rendered = render_template(template, data)
 
     output_path.write_text(rendered, encoding="utf-8")
+    generate_lecons_page(conn, Path("lecons/index.html"))
+    generate_devs_page(conn, Path("dev/index.html"))
 
     return output_path
