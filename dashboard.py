@@ -7,6 +7,8 @@ from datetime import datetime
 from pathlib import Path
 
 
+BASE_DIR = Path(__file__).resolve().parent
+
 LECONS_TOTAL = 68
 DEV_CASES_TOTAL = 2 * LECONS_TOTAL
 
@@ -369,9 +371,9 @@ def generate_devs_page(conn: sqlite3.Connection, template_path: Path, output_pat
 
 
 def generate_dashboard(
-    db_path: Path = Path("agreg.db"),
-    template_path: Path = Path("template.html"),
-    output_path: Path = Path("index.html"),
+    db_path: Path = BASE_DIR / "agreg.db",
+    template_path: Path = BASE_DIR / "template.html",
+    output_path: Path = BASE_DIR / "index.html",
 ) -> Path:
     conn = connect(db_path)
     data = collect_data(conn)
@@ -380,7 +382,15 @@ def generate_dashboard(
     rendered = render_template(template, data)
 
     output_path.write_text(rendered, encoding="utf-8")
-    generate_lecons_page(conn, Path("lecons/template.html"), Path("lecons/index.html"))
-    generate_devs_page(conn, Path("dev/template.html"), Path("dev/index.html"))
+    generate_lecons_page(
+        conn,
+        BASE_DIR / "lecons/template.html",
+        BASE_DIR / "lecons/index.html",
+    )
+    generate_devs_page(
+        conn,
+        BASE_DIR / "dev/template.html",
+        BASE_DIR / "dev/index.html",
+    )
 
     return output_path
