@@ -32,9 +32,10 @@
     .status-3 { background: var(--s3); }
     .status-4 { background: var(--s4); }
     .status-5 { background: var(--s5); }
-    .action-buttons { display: inline-flex; gap: 8px; }
-    .action-btn { display: inline-block; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); text-decoration: none; color: #1d4ed8; background: #fff; font-size: 0.85rem; }
-    .action-btn:hover { background: #eff6ff; }
+    .status-actions { display: inline-flex; align-items: center; gap: 8px; }
+    .action-icon { display: inline-flex; align-items: center; justify-content: center; color: #1d4ed8; text-decoration: none; transition: color 0.2s ease, transform 0.2s ease; }
+    .action-icon:hover { color: #1e40af; transform: translateY(-1px); }
+    .action-icon svg { display: block; }
   </style>
 </head>
 <body>
@@ -49,7 +50,6 @@
             <th>ID</th>
             <th>Titre</th>
             <th>Statut</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -66,7 +66,6 @@
             <th>ID</th>
             <th>Titre</th>
             <th>Statut</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
