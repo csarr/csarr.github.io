@@ -1,0 +1,103 @@
+\usepackage[margin=1cm]{geometry}
+
+\setlength{\columnseprule}{1pt}
+\setlength{\parindent}{0pt}
+\pagenumbering{gobble}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{wasysym}
+
+\usepackage[french]{babel}
+
+\newtheoremstyle{myplain}%
+  {\topsep}% Space above
+  {\topsep}% Space below
+  {\itshape}% Body font
+  {}% Indent amount
+  {}% Head font
+  {}% Punctuation after head
+  {5pt plus 1pt minus 1pt}% Space after head
+  {\bfseries\thmname{#1}\thmnumber{ #2}.{\normalfont\thmnote{ (#3)}}} % Head spec
+
+\newtheoremstyle{mydefinition}%
+  {0.4\topsep}% Space above
+  {0.4\topsep}% Space below
+  {\normalfont}% Body font
+  {}% Indent amount
+  {}% Head font
+  {}% Punctuation after head
+  {5pt plus 1pt minus 1pt}% Space after head
+  {\bfseries\thmname{#1}\thmnumber{ #2}.{\normalfont\thmnote{ (#3)}}} % Head spec
+
+
+\declaretheorem[name=Théorème, style=mydefinition]{theo}
+\declaretheorem[name=Définition, numberlike=theo, style=mydefinition]{defi}
+\declaretheorem[name=Proposition, numberlike=theo, style=mydefinition]{prop}
+\declaretheorem[name=Propriété, numberlike=theo, style=mydefinition]{prpr}
+\declaretheorem[name=Conjecture, numberlike=theo, style=mydefinition]{conj}
+\declaretheorem[name=Corollaire, numberlike=theo, style=mydefinition]{coro}
+\declaretheorem[name=Lemme, numberlike=theo, style=mydefinition]{lemm}
+\declaretheorem[name=Application, numberlike=theo, style=mydefinition]{appl}
+
+\newtheoremstyle{myremark}%
+  {0.5\topsep}% Space above
+  {0.5\topsep}% Space below
+  {\normalfont}% Body font
+  {}% Indent amount
+  {}% Head font
+  {}% Punctuation after head
+  {5pt plus 1pt minus 1pt}% Space after head
+  {\itshape\thmname{#1}\thmnumber{ #2}.{\normalfont\thmnote{ (#3)}}} % Head spec
+\declaretheorem[style=mydefinition,name=Remarque, numberlike=theo]{rema}
+\declaretheorem[style=mydefinition,name=Exemple, numberlike=theo]{exem}
+\declaretheorem[style=mydefinition,name=Convention, numberlike=theo]{conv}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Ps}{\mathfrak{P}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Tn}{\mathbb{T}^n}
+\DeclareMathOperator{\imm}{im}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\Id}{Id}
+\newcommand{\llb}{[\!\![}
+\newcommand{\rrb}{]\!\!]}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ub}[2]{\underbrace{#1}_{#2}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\eqdef}{\stackrel{\mathrm{def}}{=}}
+\newcommand{\wout}[1]{\setminus \{#1\}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\normsub}[1]{\left\lVert \left\lvert #1 \right\rvert \right\rVert}
+
+\AtBeginDocument{%à cause d'unicode-math
+\let\leq\leqslant
+\let\geq\geqslant
+\let\epsilon\varepsilon
+}
+
+\usepackage[style=alphabetic]{biblatex}
+\bibliography{my}

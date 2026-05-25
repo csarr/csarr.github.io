@@ -1,0 +1,197 @@
+\documentclass[twocolumn, landscape]{article}
+\input{pre.tex}
+
+\title{205. Espaces complets. Exemples et applications}
+
+\begin{document}
+
+\section{Espaces métriques complets}
+Soit $(X, d)$ un espace métrique.
+
+\subsection{Premières propriétés \cite{GouAna}}
+
+\begin{defi}
+    Une suite $(x_n) \in X^{\N}$ est dite \emph{de Cauchy} quand
+    $$\forall \epsilon > 0, \exists N \geq 0, p \geq N \text{ et } q \geq N \implies d(x_p, x_q) < \epsilon.$$
+\end{defi}
+
+\begin{prop}
+    Une suite convergente est de Cauchy. 
+\end{prop}
+
+\begin{exem}
+    Soit $X= \Q$ muni de la distance usuelle. La suite $(x_n) \in \Q^{\N}$ définie par récurrence par $$x_0 = 1 \qquad x_{n+1} = \frac{x_n}{2} + \frac{1}{x_n}$$
+    est de Cauchy mais ne converge pas.
+\end{exem}
+
+\begin{defi}
+    L'espace métrique $X$ est dit \emph{complet} si toute suite de Cauchy $(x_n) \in X^{\N}$ converge dans $X$.
+\end{defi}
+
+\begin{prop}
+    $\R$ est complet mais $\Q$ ne l'est pas. 
+\end{prop}
+
+\begin{prop}
+    Soient $((X_i, d_i))_{i \in \{1, \dots, n\}}$ des espaces métriques. On définit sur $X= X_1 \times \dots \times X_n$ la distance produit 
+    $$d((x_1, \dots, x_n), (y_1, \dots, y_n)) = \max_{i=1}^n d_i(x_i, y_i).$$
+    Si $(X_i, d_i)$ est complet pour tout $i \in \{1, \dots, n\}$, alors $(X,d)$ est complet. 
+\end{prop}
+
+\begin{prop}
+    Soit $d'$ une autre distance sur $X$. Si elle est équivalente à $d$, c'est-à-dire qu'il existe $c, C>0$ tel que pour tous $x,y \in X$, $$c d(x,y) \leq d'(x,y) \leq C d(x,y),$$
+    alors $(X,d')$ est complet si et seulement si $(X,d)$ l'est. 
+\end{prop}
+
+\begin{coro}
+    Tout espace vectoriel normé de dimension finie est complet pour la distance issue de sa norme.
+\end{coro}
+
+\begin{prop}
+    Si $A \subset X$ est complet, alors $A$ est fermé dans $X$. À l'inverse si $X$ est complet et $A\subset X$ est fermé, alors $A$ est complet. 
+\end{prop}
+
+\begin{prop}
+    Soient $(X, d_X)$ et $(Y, d_Y)$ deux espaces métriques avec $X$ non vide. On note $\mathscr{B}(X, Y)$ l'ensemble des fonctions $f:X\to Y$ bornées, c'est-à-dire telles que $f(X) \subset Y$ soit borné, et on définit
+    $$d(f,g) = \sup_{x\in X} d_Y(f(x), g(x)).$$
+    Cela fait de $\mathscr{B}(X,Y)$ un espace métrique, qui est complet si et seulement si $Y$ l'est. 
+\end{prop}
+
+\begin{prop}
+    L'ensemble $\mathscr{C}_b(X,Y)$ des fonctions continues bornées est fermé dans $\mathscr{B}(X,Y)$. Il est donc complet si $Y$ l'est. 
+\end{prop}
+
+\begin{prop}
+    Soit $Y$ un espace complet. Soit $A \subset X$ dense. Si $f : A \to Y$ est uniformément continue, il existe une unique fonction $g: X\to Y$ uniformément continue telle que $g|_A = f$.
+\end{prop}
+
+\begin{prop}
+    Il existe un espace complet $\wh{X}$ et une isométrie injective $\iota : X \to \wh{X}$ avce $\iota{X}$ dense dans $\wh{H}$. Cet espace est appelé \emph{complété} de $X$, et il est unique à unique isométrie bijective près.  
+\end{prop}
+
+\begin{exem}
+    $\R$ est le complété de $\Q$.
+\end{exem}
+
+\subsection{Théorème du point fixe et applications \cite{Demailly}}
+
+\begin{defi}
+    Une application $f: X\to X$ $k$-lipschitzienne pour $k<1$ est dite \emph{contractante}.
+\end{defi}
+
+\begin{theo}[Banach-Picard]
+    Supposons $X$ complet. Alors toute application contractante $f : X\to X$ possède un unique point fixe.
+\end{theo}
+
+\begin{rema}
+    La preuve du théorème montre que de plus la suite des itérées $$x_n = f^{(n)}(x_0)$$converge pour tout $x_0 \in X$ vers le point fixe, ce qui permet de le calculer de façon approchée.
+\end{rema}
+
+\begin{lemm}
+    Soit $f: \mathscr{B}(x,r) \to \Rd$ tel que $f-\Id$ soit $k$-lipschitzienne pour $k<1$. Alors $f$ est un homéomorphisme de $\mathscr{B}(x,r)$ sur son image, et de plus $f^{-1}$ est $1/(1-k)$-lipschitzienne. On a enfin : 
+    $$\mathscr{B}(f(x), (1-k)r) \subset f(\mathscr{B}(x,r)) \subset \mathscr{B}(f(x), (1+k)r).$$
+\end{lemm}
+
+\begin{appl}[inversion locale]
+    Soit $U$ un ouvert de $\Rd$ et $f: U\to \Rd$ de classe $\mathscr{C}^1$. Supposons que $\dd_x f : \Rd \to \Rd$ soit bijective en $x\in \Rd$. Alors il existe un voisinage ouvert $V$ de $x$ dans $U$ et un voisinage ouvert $W$ de $f(x)$ tel que $f: V \to W$ soit un $\mathscr{C}^1$-difféomorphisme.
+\end{appl}
+
+\begin{lemm}
+    Soit $f: C\to \Rd$ $k$-lipschitzienne avec $C = [t_0 -T, t_0 + T] \times \ol{\mathscr{B}}(y_0, r_0) \subset \R \times \Rd$. Soit $M = \sup_C \norm{f}$ et $T \leq \min(T_0, r_0/M)$. L'application
+    $$\Phi : y \mapsto (t \mapsto \int_{t_0}^t f(s, y(s)) \,\dd s)$$
+    laisse stable l'espace complet $\mathscr{C}([t_0 - T, t_0 + T], \ol{\mathscr{B}}(y_0, r_0))$ et est contractante.
+\end{lemm}
+
+\begin{appl}[Cauchy-Lipschitz]
+    Soit $U \subset \R \times \Rd$. Soit $f: U \to \Rd$ localement lipschitzienne. Pour tout $(t_0, y_0) \in U$, le problème de Cauchy 
+    $$\begin{cases}
+        y'(t) = f(y(t)) \\
+        y(t_0) = y_0
+    \end{cases}$$
+    possède une unique solution locale $y : [t_0 -T, t_0 + T] \to U$.
+\end{appl}
+
+\pagebreak
+
+\subsection{Théorème de Baire et applications \cite{GouAna}}
+
+\begin{theo}[Baire]
+    Supposons $X$ complet. Soit $(\mathscr{O}_n)$ une suite d'ouverts denses de $X$. Alors $\bigcap O_n$ est encore dense, et en particulier non vide.
+\end{theo}
+
+\begin{coro}
+    Supposons $X$ complet. Soit $(\mathscr{F}_n)$ une suite de fermés d'intérieur vide de $X$. Alors $\bigcup F_n$ est encore d'intérieur vide, et en particulier $\bigcup F_n \neq X$.
+\end{coro}
+
+\begin{appl}
+    Il n'existe aucune norme faisant de $\R[X]$ un espace complet.
+\end{appl}
+
+\begin{appl}
+    L'ensemble des fonctions $f: [0, 1] \to \R$ continues nulle part dérivable est dense dans $\mathscr{C}([0, 1], \R)$. En particulier, il existe une fonction réelle nulle part dérivable.
+\end{appl}
+
+\begin{appl}
+    Soit $f : \R \to \R$ une fonction dérivable. Sa dérivée $f' : \R \to \R$ est continue sur un ensemble dense.
+\end{appl}
+
+\section{Espaces de Banach \cite{Rudin}}
+
+\subsection{Résulats fondamentaux}
+
+\begin{defi}
+    Un espace de Banach est un espace vectoriel normé qui est complet pour la distance issue de sa norme.
+\end{defi}
+
+\begin{prop}
+    Si $X$ est un espace métrique et $Y$ un espace de Banach, $\mathscr{B}(X,Y)$ et $\mathscr{C}_b(X,Y)$ sont des espaces de Banach. On définit aussi
+    $$\mathscr{C}_0(X) = \{f\in \mathscr{C}(X, \R) \mid \forall \epsilon > 0, \exists K \subset X \text{ compact}, \sup_{x \not \in K} \abs{f(x)} < \epsilon\}.$$
+    C'est un fermé de $\mathscr{C}_b(X, \R)$ donc un espace de Banach.  
+\end{prop}
+
+\begin{prop}
+    Si $X$ et $Y$ sont deux espaces de Banach, alors $X\times Y$ et $\mathscr{L}_c(X, Y)$ aussi. En particulier, $X' = \mathscr{L}_c(X, \R)$, le dual (topologique) de $X$, est un espace de Banach.
+\end{prop}
+
+\begin{theo}[Riesz-Fischer]
+    Soit $(\Omega, \mu)$ un espace mesuré. L'espace $L^p(\Omega, \mu)$ est complet pour tout $p \in [1, \infty]$.
+\end{theo}
+
+\begin{exem}
+    En prenant pour $(\Omega, \mu)$ $\N$ muni de la mesure de comptage, on obtient que l'espace des suites
+    $$\ell^p(\N) = \left\{ x_n \in \R^{\N} \mid \sum \abs{x_n}^p < \infty \right\}$$
+    est complet. 
+\end{exem}
+
+\begin{theo}[Banach-Steinhaus]
+    Soit $X$ un espace de Banach et $Y$ un espace vectoriel normé. Soit $(T_i)_{i\in I}$ une famille d'applications linéaires continues de $X$ dans $Y$. Alors :
+    \begin{itemize}
+        \item ou bien il existe $M < \infty$ tel que $$\forall i \in I, \normsub{T_i} \leq M$$
+        \item ou bien l'ensemble des $x\in X$ tels que $$\sup \norm{T_i(x)}_Y = \infty$$
+        est dense dans $X$. En particulier, il existe $x\in X$ tel que $$\sup \norm{T_i(x)}_Y = \infty.$$
+    \end{itemize}
+\end{theo}
+
+\begin{theo}[application ouverte]
+    Si $X$ et $Y$ sont deux espaces de Banach et que $T: X\to Y$ est linéaire continue bijective, alors $T^{-1} : Y \to X$ est aussi linéaire continue.
+\end{theo}
+
+\begin{theo}[graphe fermé]
+    Soient $X$ et $Y$ deux espaces de Banach. Une application linéaire $T : X\to Y$ est continue si et seulement si son graphe $$\Gamma(T) = \{ (x, Tx) \in X\times Y \mid x\in X \}$$est fermé dans $X\times Y$.
+\end{theo}
+
+\subsection{Rappels d'analyse de Fourier}
+
+\subsection{Applications de la théorie des espaces de Banach à l'analyse de Fourier}
+
+\section{Espaces de Hilbert}
+
+\subsection{Premières propriétés}
+
+\subsection{Projection sur un convexe fermé et conséquences}
+
+\subsection{Compacité faible et applications}
+
+\nocite{IPdev}
+\printbibliography
+\end{document}
