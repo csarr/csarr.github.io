@@ -161,10 +161,9 @@ def build_assoc_html(
         else:
             chips.append(safe_label)
 
-    legend = f"<strong>{html.escape(selected_label)}</strong> · {html.escape(unselected_label)}"
     return (
-        f"<div style=\"margin-top: 0.25rem; font-size: 0.9em; color: #444;\">"
-        f"{legend}<br>{', '.join(chips)}"
+        f"<div style=\"margin-top: 0.25rem; font-size: 0.9em; color: #0006; font-weight: 100;\">"
+        f"{', '.join(chips)}"
         f"</div>"
     )
 
@@ -268,7 +267,7 @@ def generate_lecons_page(conn: sqlite3.Connection, template_path: Path, output_p
     for row in assoc_rows:
         lecon_id = int(row["lecon_id"])
         assoc_by_lecon.setdefault(lecon_id, []).append(
-            (f"{int(row['dev_id'])} — {str(row['dev_name'])}", int(row["selected"]) == 1)
+            (f"{int(row['dev_id'])}: {str(row['dev_name'])}", int(row["selected"]) == 1)
         )
 
     starred_rows = build_detail_rows(
@@ -336,7 +335,7 @@ def generate_devs_page(conn: sqlite3.Connection, template_path: Path, output_pat
     for row in assoc_rows:
         dev_id = int(row["dev_id"])
         assoc_by_dev.setdefault(dev_id, []).append(
-            (f"{int(row['lecon_id'])} — {str(row['lecon_name'])}", int(row["selected"]) == 1)
+            (f"{int(row['lecon_id'])}", int(row["selected"]) == 1)
         )
 
     starred_rows = build_detail_rows(
