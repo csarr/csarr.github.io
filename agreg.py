@@ -157,6 +157,36 @@ def revisit(conn: sqlite3.Connection, kind: str, item_id: int) -> None:
     print(f"Revisited {kind} {item_id} at {timestamp}.")
 
 
+def toggle_star(conn: sqlite3.Connection, kind: str, item_id: int) -> None:
+    table, id_col = table_for_kind(kind)
+    row = conn.execute(
+        f"""
+        SELECT starred
+        FROM {table}
+        WHERE {id_col} = ?
+        """,
+        (item_id,),
+    ).fetchone()
+
+    if row is None:
+        raise SystemExit(f"No such {kind}: {item_id}")
+
+    starred = 0 if row["starred"] else 1
+
+    conn.execute(
+        f"""
+        UPDATE {table}
+        SET starred = ?
+        WHERE {id_col} = ?
+        """,
+        (starred, item_id),
+    )
+    conn.commit()
+
+    state = "starred" if starred else "unstarred"
+    print(f"{kind} {item_id} is now {state}.")
+
+
 def associate_dev_to_lecon(
     conn: sqlite3.Connection,
     dev_id: int,
@@ -299,6 +329,10 @@ def main() -> None:
     p.add_argument("kind", choices=["lecon", "leçon", "dev", "plan"])
     p.add_argument("id", type=int)
 
+    p = sub.add_parser("star")
+    p.add_argument("kind", choices=["lecon", "leçon", "dev", "plan"])
+    p.add_argument("id", type=int)
+
     p = sub.add_parser("associate")
     p.add_argument("dev_id", type=int)
     p.add_argument("lecon_id", type=int)
@@ -337,6 +371,9 @@ def main() -> None:
 
         case "revisit":
             revisit(conn, args.kind, args.id)
+
+        case "star":
+            toggle_star(conn, args.kind, args.id)
 
         case "associate":
             associate_dev_to_lecon(conn, args.dev_id, args.lecon_id)
