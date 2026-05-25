@@ -145,11 +145,32 @@ def has_column(conn: sqlite3.Connection, table: str, column: str) -> bool:
     return any(str(row["name"]) == column for row in rows)
 
 
-def build_detail_rows(items: list[sqlite3.Row], id_key: str = "id") -> str:
-    return "\n".join(
-        f"<tr><td>{int(row[id_key])}</td><td>{html.escape(str(row['name']))}</td><td><span class=\"status-dot {STATUS_CLASSES[int(row['status'])]}\" title=\"{html.escape(STATUS_LABELS[int(row['status'])])}\"></span></td></tr>"
-        for row in items
-    )
+def build_detail_rows(items: list[sqlite3.Row], folder: str, id_key: str = "id") -> str:
+    rows: list[str] = []
+
+    for row in items:
+        item_id = int(row[id_key])
+        status = int(row["status"])
+        status_dot = f"<span class=\"status-dot {STATUS_CLASSES[status]}\" title=\"{html.escape(STATUS_LABELS[status])}\"></span>"
+
+        if status >= 3:
+            pdf_href = f"{item_id}.pdf"
+            tex_path = f"/home/claude/Documents/agreg_tex/{folder}/{item_id}.tex"
+            tex_href = f"vscode://file{tex_path}"
+            actions = (
+                f"<div class=\"action-buttons\">"
+                f"<a class=\"action-btn\" href=\"{pdf_href}\" target=\"_blank\" rel=\"noopener\">PDF</a>"
+                f"<a class=\"action-btn\" href=\"{tex_href}\">TEX (VSCode)</a>"
+                f"</div>"
+            )
+        else:
+            actions = "—"
+
+        rows.append(
+            f"<tr><td>{item_id}</td><td>{html.escape(str(row['name']))}</td><td>{status_dot}</td><td>{actions}</td></tr>"
+        )
+
+    return "\n".join(rows)
 
 
 def generate_lecons_page(conn: sqlite3.Connection, template_path: Path, output_path: Path) -> Path:
@@ -166,8 +187,8 @@ def generate_lecons_page(conn: sqlite3.Connection, template_path: Path, output_p
     starred_lecons = [row for row in lecons if int(row["starred"]) == 1]
     regular_lecons = [row for row in lecons if int(row["starred"]) == 0]
 
-    starred_rows = build_detail_rows(starred_lecons)
-    rows = build_detail_rows(regular_lecons)
+    starred_rows = build_detail_rows(starred_lecons, "lecons")
+    rows = build_detail_rows(regular_lecons, "lecons")
 
     data = {
         "PAGE_TITLE": "Leçons",
@@ -198,8 +219,8 @@ def generate_devs_page(conn: sqlite3.Connection, template_path: Path, output_pat
     starred_devs = [row for row in devs if int(row["starred"]) == 1]
     regular_devs = [row for row in devs if int(row["starred"]) == 0]
 
-    starred_rows = build_detail_rows(starred_devs)
-    rows = build_detail_rows(regular_devs)
+    starred_rows = build_detail_rows(starred_devs, "dev")
+    rows = build_detail_rows(regular_devs, "dev")
 
     data = {
         "PAGE_TITLE": "Développements",
