@@ -241,10 +241,18 @@ def show_lecon(conn: sqlite3.Connection, lecon_id: int) -> None:
 
     devs = conn.execute(
         """
-        SELECT d.id, d.name, d.status, d.last_revisited
+        SELECT
+            d.id,
+            d.name,
+            d.status,
+            d.last_revisited,
+            CASE WHEN ld.dev_id IS NULL THEN 0 ELSE 1 END AS selected
         FROM devs d
-        JOIN lecon_devs ld ON ld.dev_id = d.id
-        WHERE ld.lecon_id = ?
+        JOIN dev_lecons dl ON dl.dev_id = d.id
+        LEFT JOIN lecon_devs ld
+            ON ld.dev_id = d.id
+           AND ld.lecon_id = dl.lecon_id
+        WHERE dl.lecon_id = ?
         ORDER BY d.id
         """,
         (lecon_id,),
@@ -253,12 +261,14 @@ def show_lecon(conn: sqlite3.Connection, lecon_id: int) -> None:
     print(f"{lecon['id']} — {lecon['name']}")
     print(f"status: {lecon['status']} ({STATUS_NAMES[lecon['status']]})")
     print(f"last revisited: {lecon['last_revisited']}")
-    print("selected devs:")
+    print("associated devs:")
 
     for dev in devs:
+        selected_marker = " [SELECTED]" if int(dev["selected"]) == 1 else ""
         print(
             f"  {dev['id']} — {dev['name']} "
             f"[{dev['status']}: {STATUS_NAMES[dev['status']]}]"
+            f"{selected_marker}"
         )
 
 
@@ -277,9 +287,17 @@ def show_dev(conn: sqlite3.Connection, dev_id: int) -> None:
 
     lecons = conn.execute(
         """
-        SELECT l.id, l.name, l.status, l.last_revisited
+        SELECT
+            l.id,
+            l.name,
+            l.status,
+            l.last_revisited,
+            CASE WHEN ld.dev_id IS NULL THEN 0 ELSE 1 END AS selected
         FROM lecons l
         JOIN dev_lecons dl ON dl.lecon_id = l.id
+        LEFT JOIN lecon_devs ld
+            ON ld.lecon_id = l.id
+           AND ld.dev_id = dl.dev_id
         WHERE dl.dev_id = ?
         ORDER BY l.id
         """,
@@ -292,9 +310,11 @@ def show_dev(conn: sqlite3.Connection, dev_id: int) -> None:
     print("associated leçons:")
 
     for lecon in lecons:
+        selected_marker = " [SELECTED]" if int(lecon["selected"]) == 1 else ""
         print(
             f"  {lecon['id']} — {lecon['name']} "
             f"[{lecon['status']}: {STATUS_NAMES[lecon['status']]}]"
+            f"{selected_marker}"
         )
 
 

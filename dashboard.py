@@ -145,7 +145,38 @@ def has_column(conn: sqlite3.Connection, table: str, column: str) -> bool:
     return any(str(row["name"]) == column for row in rows)
 
 
-def build_detail_rows(items: list[sqlite3.Row], folder: str, id_key: str = "id") -> str:
+def build_assoc_html(
+    entries: list[tuple[str, bool]],
+    selected_label: str,
+    unselected_label: str,
+) -> str:
+    if not entries:
+        return ""
+
+    chips: list[str] = []
+    for label, is_selected in entries:
+        safe_label = html.escape(label)
+        if is_selected:
+            chips.append(f"<strong>{safe_label}</strong>")
+        else:
+            chips.append(safe_label)
+
+    legend = f"<strong>{html.escape(selected_label)}</strong> · {html.escape(unselected_label)}"
+    return (
+        f"<div style=\"margin-top: 0.25rem; font-size: 0.9em; color: #444;\">"
+        f"{legend}<br>{', '.join(chips)}"
+        f"</div>"
+    )
+
+
+def build_detail_rows(
+    items: list[sqlite3.Row],
+    folder: str,
+    id_key: str = "id",
+    assoc_by_item: dict[int, list[tuple[str, bool]]] | None = None,
+    assoc_selected_label: str = "sélectionné",
+    assoc_unselected_label: str = "possible",
+) -> str:
     rows: list[str] = []
     pdf_icon = (
         "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" "
@@ -187,8 +218,16 @@ def build_detail_rows(items: list[sqlite3.Row], folder: str, id_key: str = "id")
         else:
             actions = f"<div class=\"status-actions\">{status_dot}</div>"
 
+        assoc_html = ""
+        if assoc_by_item is not None:
+            assoc_html = build_assoc_html(
+                assoc_by_item.get(item_id, []),
+                assoc_selected_label,
+                assoc_unselected_label,
+            )
+
         rows.append(
-            f"<tr><td>{item_id}</td><td>{html.escape(str(row['name']))}</td><td>{actions}</td></tr>"
+            f"<tr><td>{item_id}</td><td>{html.escape(str(row['name']))}{assoc_html}</td><td>{actions}</td></tr>"
         )
 
     return "\n".join(rows)
@@ -208,8 +247,44 @@ def generate_lecons_page(conn: sqlite3.Connection, template_path: Path, output_p
     starred_lecons = [row for row in lecons if int(row["starred"]) == 1]
     regular_lecons = [row for row in lecons if int(row["starred"]) == 0]
 
-    starred_rows = build_detail_rows(starred_lecons, "lecons")
-    rows = build_detail_rows(regular_lecons, "lecons")
+    assoc_rows = conn.execute(
+        """
+        SELECT
+            l.id AS lecon_id,
+            d.id AS dev_id,
+            d.name AS dev_name,
+            CASE WHEN ld.dev_id IS NULL THEN 0 ELSE 1 END AS selected
+        FROM lecons l
+        LEFT JOIN dev_lecons dl ON dl.lecon_id = l.id
+        LEFT JOIN devs d ON d.id = dl.dev_id
+        LEFT JOIN lecon_devs ld
+            ON ld.lecon_id = l.id
+           AND ld.dev_id = d.id
+        WHERE d.id IS NOT NULL
+        ORDER BY l.id, d.id
+        """
+    ).fetchall()
+    assoc_by_lecon: dict[int, list[tuple[str, bool]]] = {}
+    for row in assoc_rows:
+        lecon_id = int(row["lecon_id"])
+        assoc_by_lecon.setdefault(lecon_id, []).append(
+            (f"{int(row['dev_id'])} — {str(row['dev_name'])}", int(row["selected"]) == 1)
+        )
+
+    starred_rows = build_detail_rows(
+        starred_lecons,
+        "lecons",
+        assoc_by_item=assoc_by_lecon,
+        assoc_selected_label="sélectionné",
+        assoc_unselected_label="non sélectionné",
+    )
+    rows = build_detail_rows(
+        regular_lecons,
+        "lecons",
+        assoc_by_item=assoc_by_lecon,
+        assoc_selected_label="sélectionné",
+        assoc_unselected_label="non sélectionné",
+    )
 
     data = {
         "PAGE_TITLE": "Leçons",
@@ -240,8 +315,44 @@ def generate_devs_page(conn: sqlite3.Connection, template_path: Path, output_pat
     starred_devs = [row for row in devs if int(row["starred"]) == 1]
     regular_devs = [row for row in devs if int(row["starred"]) == 0]
 
-    starred_rows = build_detail_rows(starred_devs, "dev")
-    rows = build_detail_rows(regular_devs, "dev")
+    assoc_rows = conn.execute(
+        """
+        SELECT
+            d.id AS dev_id,
+            l.id AS lecon_id,
+            l.name AS lecon_name,
+            CASE WHEN ld.dev_id IS NULL THEN 0 ELSE 1 END AS selected
+        FROM devs d
+        LEFT JOIN dev_lecons dl ON dl.dev_id = d.id
+        LEFT JOIN lecons l ON l.id = dl.lecon_id
+        LEFT JOIN lecon_devs ld
+            ON ld.lecon_id = l.id
+           AND ld.dev_id = d.id
+        WHERE l.id IS NOT NULL
+        ORDER BY d.id, l.id
+        """
+    ).fetchall()
+    assoc_by_dev: dict[int, list[tuple[str, bool]]] = {}
+    for row in assoc_rows:
+        dev_id = int(row["dev_id"])
+        assoc_by_dev.setdefault(dev_id, []).append(
+            (f"{int(row['lecon_id'])} — {str(row['lecon_name'])}", int(row["selected"]) == 1)
+        )
+
+    starred_rows = build_detail_rows(
+        starred_devs,
+        "dev",
+        assoc_by_item=assoc_by_dev,
+        assoc_selected_label="sélectionnée",
+        assoc_unselected_label="non sélectionnée",
+    )
+    rows = build_detail_rows(
+        regular_devs,
+        "dev",
+        assoc_by_item=assoc_by_dev,
+        assoc_selected_label="sélectionnée",
+        assoc_unselected_label="non sélectionnée",
+    )
 
     data = {
         "PAGE_TITLE": "Développements",
