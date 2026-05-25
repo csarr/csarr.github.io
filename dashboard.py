@@ -155,8 +155,8 @@ def build_detail_rows(items: list[sqlite3.Row], folder: str, id_key: str = "id")
 
         if status >= 3:
             pdf_href = f"{item_id}.pdf"
-            tex_path = f"/home/claude/Documents/agreg_tex/{folder}/{item_id}.tex"
-            tex_href = f"vscode://file{tex_path}"
+            tex_path = f"/home/constance/Documents/agreg_tex/{folder}/{item_id}.tex"
+            tex_href = f"vscodium://file{tex_path}"
             actions = (
                 f"<div class=\"action-buttons\">"
                 f"<a class=\"action-btn\" href=\"{pdf_href}\" target=\"_blank\" rel=\"noopener\">PDF</a>"
