@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard agrégation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --card: #fffaf0;
+      --ink: #1f2933;
+      --muted: #6b7280;
+      --border: #e5dcc9;
+
+      --s1: #9ca3af;
+      --s2: #a70a6b;
+      --s3: #f59e0b;
+      --s4: #d3d950;
+      --s5: #427525;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, #fff7d6 0, transparent 35%),
+        radial-gradient(circle at bottom right, #dbeafe 0, transparent 30%),
+        var(--bg);
+      color: var(--ink);
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: color-mix(in srgb, var(--card) 92%, white);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow:
+        0 20px 50px rgba(31, 41, 51, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .card h2 {
+      margin: 0 0 24px;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .metric {
+      margin-bottom: 28px;
+    }
+
+    .metric-main {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+    }
+
+    .metric-label {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 16px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #e5e7eb;
+      margin-top: 16px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #f59e0b, #22c55e);
+    }
+
+    .big-percent {
+      margin-top: 8px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .bars {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 32px;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.92rem;
+    }
+
+    .bar-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .bar-count {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+    }
+
+    .status-1 { background: var(--s1); }
+    .status-2 { background: var(--s2); }
+    .status-3 { background: var(--s3); }
+    .status-4 { background: var(--s4); }
+    .status-5 { background: var(--s5); }
+
+    .secondary-metrics {
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .mini-value {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .mini-label {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header>
+      <h1>Bonjour, Constance!</h1>
+      <div class="subtitle">Beau temps pour faire des maths aujourd'hui.</div>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Leçons</h2>
+
+        <div class="metric">
+          <div class="metric-main">{{LECONS_WRITTEN}}/{{LECONS_TOTAL}}</div>
+          <div class="metric-label">leçons écrites</div>
+
+          <div class="progress-track">
+            <div class="progress-fill" style="width: {{LECONS_PERCENT}}%"></div>
+          </div>
+
+          <div class="big-percent">{{LECONS_PERCENT}}%</div>
+        </div>
+
+        <div class="bars">
+          {{STATUS_BARS}}
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Développements</h2>
+
+        <div class="metric">
+          <div class="metric-main">{{DEV_CASES_FILLED}}/{{DEV_CASES_TOTAL}}</div>
+          <div class="metric-label">cases remplies</div>
+
+          <div class="progress-track">
+            <div class="progress-fill" style="width: {{DEV_PERCENT}}%"></div>
+          </div>
+
+          <div class="big-percent">{{DEV_PERCENT}}%</div>
+        </div>
+
+        <div class="secondary-metrics">
+          <div class="mini-card">
+            <div class="mini-value">{{DEV_AVERAGE_RECASAGE}}</div>
+            <div class="mini-label">recasage moyen</div>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-value">{{DEV_TOTAL}}</div>
+            <div class="mini-label">nombre total de développements</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      Source : agreg.db
+    </footer>
+  </main>
+</body>
+</html>
