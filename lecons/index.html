@@ -26,16 +26,26 @@
     table { width: 100%; border-collapse: collapse; border: 1px solid}
     th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
     th { color: var(--muted); font-weight: 600; }
-    .status-dot { width: 12px; height: 12px; border-radius: 999px; display: inline-block; vertical-align: middle; }
+    .status-dot { width: 12px; height: 12px; border-radius: 999px; display: inline-block; vertical-align: middle; margin-right: 4px}
     .status-1 { background: var(--s1); }
     .status-2 { background: var(--s2); }
     .status-3 { background: var(--s3); }
     .status-4 { background: var(--s4); }
     .status-5 { background: var(--s5); }
     .status-actions { display: inline-flex; align-items: center; gap: 8px; }
-    .action-icon { display: inline-flex; align-items: center; justify-content: center; color: #1d4ed8; text-decoration: none; transition: color 0.2s ease, transform 0.2s ease; }
+    .action-icon { display: inline-flex; align-items: center; justify-content: center; color: black; text-decoration: none; transition: color 0.2s ease, transform 0.2s ease; }
     .action-icon:hover { color: #1e40af; transform: translateY(-1px); }
     .action-icon svg { display: block; }
+    th:last-child, td:last-child {
+  width: 0px;
+  text-align: right;
+}
+th:first-child, td:first-child {
+  width: 0px;
+}
+th:last-child {
+  color: transparent;
+}
   </style>
 </head>
 <body>
@@ -53,7 +63,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>205</td><td>Espaces complets. Exemples et applications</td><td><div class="status-actions"><span class="status-dot status-3" title="rédaction"></span><a class="action-icon" href="205.pdf" target="_blank" rel="noopener" title="Ouvrir le PDF"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/></svg></a><a class="action-icon" href="vscodium://file/home/constance/Documents/agreg_tex/lecons/205.tex" title="Ouvrir le TEX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg></a></div></td></tr>
+          <tr><td>201</td><td>Espaces de fonctions. Exemples et applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
+<tr><td>203</td><td>Utilisation de la notion de compacité.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
+<tr><td>205</td><td>Espaces complets. Exemples et applications</td><td><div class="status-actions"><span class="status-dot status-3" title="rédaction"></span><a class="action-icon" href="205.pdf" target="_blank" rel="noopener" title="Ouvrir le PDF"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/></svg></a><a class="action-icon" href="vscodium://file/home/constance/Documents/agreg_tex/lecons/205.tex" title="Ouvrir le TEX"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/></svg></a></div></td></tr>
+<tr><td>206</td><td>Exemples d’utilisation de la notion de dimension finie en analyse.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
+<tr><td>245</td><td>Fonctions holomorphes et méromorphes sur un ouvert de C. Exemples et applications</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
         </tbody>
       </table>
     </section>
@@ -103,10 +117,7 @@
 <tr><td>181</td><td>Convexité dans Rn. Applications en algèbre et en géométrie.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>190</td><td>Méthodes combinatoires, problèmes de dénombrement.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>191</td><td>Exemples d’utilisation de techniques d’algèbre en géométrie.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
-<tr><td>201</td><td>Espaces de fonctions. Exemples et applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
-<tr><td>203</td><td>Utilisation de la notion de compacité.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>204</td><td>Connexité. Exemples d’applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
-<tr><td>206</td><td>Exemples d’utilisation de la notion de dimension finie en analyse.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>208</td><td>Espaces vectoriels normés, applications linéaires continues. Exemples.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>209</td><td>Approximation d’une fonction par des fonctions régulières. Exemples d’applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>213</td><td>Espaces de Hilbert. Exemples d’applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
@@ -128,7 +139,6 @@
 <tr><td>239</td><td>Fonctions définies par une intégrale dépendant d’un paramètre. Exemples et applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>241</td><td>Suites et séries de fonctions. Exemples et contre-exemples.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>243</td><td>Séries entières, propriétés de la somme. Exemples et applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
-<tr><td>245</td><td>Fonctions holomorphes et méromorphes sur un ouvert de C. Exemples et applications</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>246</td><td>Séries de Fourier. Exemples et applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>250</td><td>Transformation de Fourier. Applications.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>
 <tr><td>253</td><td>Utilisation de la notion de convexité en analyse.</td><td><div class="status-actions"><span class="status-dot status-1" title="vide"></span></div></td></tr>

@@ -26,16 +26,26 @@
     table { width: 100%; border-collapse: collapse; border: 1px solid}
     th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
     th { color: var(--muted); font-weight: 600; }
-    .status-dot { width: 12px; height: 12px; border-radius: 999px; display: inline-block; vertical-align: middle; }
+    .status-dot { width: 12px; height: 12px; border-radius: 999px; display: inline-block; vertical-align: middle; margin-right: 4px}
     .status-1 { background: var(--s1); }
     .status-2 { background: var(--s2); }
     .status-3 { background: var(--s3); }
     .status-4 { background: var(--s4); }
     .status-5 { background: var(--s5); }
     .status-actions { display: inline-flex; align-items: center; gap: 8px; }
-    .action-icon { display: inline-flex; align-items: center; justify-content: center; color: #1d4ed8; text-decoration: none; transition: color 0.2s ease, transform 0.2s ease; }
+    .action-icon { display: inline-flex; align-items: center; justify-content: center; color: black; text-decoration: none; transition: color 0.2s ease, transform 0.2s ease; }
     .action-icon:hover { color: #1e40af; transform: translateY(-1px); }
     .action-icon svg { display: block; }
+    th:last-child, td:last-child {
+  width: 0px;
+  text-align: right;
+}
+th:first-child, td:first-child {
+  width: 0px;
+}
+th:last-child {
+  color: transparent;
+}
   </style>
 </head>
 <body>
