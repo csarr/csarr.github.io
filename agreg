@@ -229,6 +229,46 @@ def select_dev_for_lecon(
     print(f"Selected dev {dev_id} for leçon {lecon_id}.")
 
 
+def unselect_dev_for_lecon(
+    conn: sqlite3.Connection,
+    lecon_id: int,
+    dev_id: int,
+) -> None:
+    cur = conn.execute(
+        """
+        DELETE FROM lecon_devs
+        WHERE lecon_id = ? AND dev_id = ?
+        """,
+        (lecon_id, dev_id),
+    )
+    conn.commit()
+
+    if cur.rowcount == 0:
+        raise SystemExit(f"Dev {dev_id} is not selected for leçon {lecon_id}.")
+
+    print(f"Unselected dev {dev_id} for leçon {lecon_id}.")
+
+
+def unassociate_dev_from_lecon(
+    conn: sqlite3.Connection,
+    dev_id: int,
+    lecon_id: int,
+) -> None:
+    cur = conn.execute(
+        """
+        DELETE FROM dev_lecons
+        WHERE dev_id = ? AND lecon_id = ?
+        """,
+        (dev_id, lecon_id),
+    )
+    conn.commit()
+
+    if cur.rowcount == 0:
+        raise SystemExit(f"Dev {dev_id} is not associated to leçon {lecon_id}.")
+
+    print(f"Unassociated dev {dev_id} from leçon {lecon_id}.")
+
+
 def show_lecon(conn: sqlite3.Connection, lecon_id: int) -> None:
     lecon = conn.execute(
         """
@@ -360,7 +400,15 @@ def main() -> None:
     p.add_argument("dev_id", type=int)
     p.add_argument("lecon_id", type=int)
 
+    p = sub.add_parser("unassociate")
+    p.add_argument("dev_id", type=int)
+    p.add_argument("lecon_id", type=int)
+
     p = sub.add_parser("select")
+    p.add_argument("lecon_id", type=int)
+    p.add_argument("dev_id", type=int)
+
+    p = sub.add_parser("unselect")
     p.add_argument("lecon_id", type=int)
     p.add_argument("dev_id", type=int)
 
@@ -401,8 +449,14 @@ def main() -> None:
         case "associate":
             associate_dev_to_lecon(conn, args.dev_id, args.lecon_id)
 
+        case "unassociate":
+            unassociate_dev_from_lecon(conn, args.dev_id, args.lecon_id)
+
         case "select":
             select_dev_for_lecon(conn, args.lecon_id, args.dev_id)
+
+        case "unselect":
+            unselect_dev_for_lecon(conn, args.lecon_id, args.dev_id)
 
         case "show-lecon":
             show_lecon(conn, args.lecon_id)
