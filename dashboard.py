@@ -213,7 +213,7 @@ def build_detail_rows(
             actions = (
                 f"<div class=\"status-actions\">{status_dot}"
                 f"<a class=\"action-icon\" href=\"{pdf_href}\" target=\"_blank\" rel=\"noopener\" title=\"Ouvrir le PDF\">{pdf_icon}</a>"
-                f"<a class=\"action-icon\" href=\"{tex_href}\" title=\"Ouvrir le TEX\">{tex_icon}</a>"
+                f"<a class=\"action-icon\" href=\"{tex_href}\" title=\"Éditer en LaTeX\">{tex_icon}</a>"
                 f"</div>"
             )
         else:
