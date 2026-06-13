@@ -246,7 +246,7 @@ Soit $(X, d)$ un espace métrique.
 \end{exem}
 
 \begin{defi}
-    Soient $f,g \in L^2(\mathbb{T}^d)$. Soit $\alpha \in \N^d$. On dit que $g = \partial_\alpha f$ au sens faible quand pour toute fonction lisse $\phi : \mathbb{T}^d \to \R$ : $$\int_{\mathbb{T}^d} g \phi = \int_{\mathbb{T}^d} f \partial_{\alpha} \phi.$$
+    Soient $f,g \in L^2(\mathbb{T}^d)$. Soit $\alpha \in \N^d$. On dit que $g = \partial_\alpha f$ au sens faible quand pour toute fonction lisse $\phi : \mathbb{T}^d \to \R$ : $$\int_{\mathbb{T}^d} g \phi = (-1)^{\abs{\alpha}} \int_{\mathbb{T}^d} f \partial_{\alpha} \phi.$$
 \end{defi}
 
 \begin{rema}
@@ -312,6 +312,13 @@ Soit $H$ un espace de Hilbert.
 \printbibliography
 
 \section*{Remarques}
+
+\begin{itemize}
+    \item Subtilité pour la définition de l'espace $C^k$ : on peut aussi définir les fonctions $C^k$ sur $K$ comme les restrictions à $K$ de fonctions $C^k$ définies sur un voisinage, mais cette def n'est équivalente que si $\Omega$ est à bord $C^k$. 
+    \item Attention à ce qu'on raconte sur la topologie faible car elle n'est pas métrisable (elle l'est seulement sur les bornés si $H$ est séparable) donc il faut bien préciser compacité séquentielle. 
+    \item Un exemple d'application de DEV2 est le pb de la membrane elastique (films de savon) : on minimise la fonctionelle d'aire $$A(u) = \int_{\Omega} \sqrt{1+ \abs{\nabla u}^2}$$
+    parmi les fonctions $W^{1,1}_0 + u_0$ où $u_0$ est le bord prescrit. Voir cours M1 d'EO.
+\end{itemize}
 
 \newpage
 
