@@ -66,7 +66,7 @@ Soit $(X, d)$ un espace métrique.
 \end{prop}
 
 \begin{prop}
-    Il existe un espace complet $\wh{X}$ et une isométrie injective $\iota : X \to \wh{X}$ avce $\iota{X}$ dense dans $\wh{H}$. Cet espace est appelé \emph{complété} de $X$, et il est unique à unique isométrie bijective près.  
+    Il existe un espace complet $\wh{X}$ et une isométrie injective $\iota : X \to \wh{X}$ avce $\iota(X)$ dense dans $\wh{H}$. Cet espace est appelé \emph{complété} de $X$, et il est unique à unique isométrie bijective près.  
 \end{prop}
 
 \begin{exem}
@@ -137,17 +137,27 @@ Soit $(X, d)$ un espace métrique.
 
 \section{Espaces de Banach}
 
-\subsection{Résulats fondamentaux \cite{Li}}
+\subsection{Exemples d'espaces de Banach}
 
 \begin{defi}
     Un espace de Banach est un espace vectoriel normé qui est complet pour la distance issue de sa norme.
 \end{defi}
 
-\begin{prop}
-    Si $X$ est un espace métrique et $Y$ un espace de Banach, $\mathscr{B}(X,Y)$ et $\mathscr{C}_b(X,Y)$ sont des espaces de Banach. On définit aussi
+\begin{exem}
+    Si $X$ est un espace métrique et $Y$ un espace de Banach, $\mathscr{B}(X,Y)$ et $\mathscr{C}_b(X,Y)$ sont des espaces de Banach.
+\end{exem}
+
+\begin{exem}
+    On définit l'espace des fonctions qui tendent vers 0 en l'infini :
     $$\mathscr{C}_0(X) = \{f\in \mathscr{C}(X, \R) \mid \forall \epsilon > 0, \exists K \subset X \text{ compact}, \sup_{x \not \in K} \abs{f(x)} < \epsilon\}.$$
     C'est un fermé de $\mathscr{C}_b(X, \R)$ donc un espace de Banach.  
-\end{prop}
+\end{exem}
+
+\begin{exem}
+    Soit $\Omega \subset \R^n$ avec $K = \ol{\Omega}$ compact. On dit que $f:K \to \R$ est de classe $\mathscr{C}^k$ quand elle est de classe $\mathscr{C}^k$ sur $\Omega$ et que de plus pour tout $\alpha \in \N^d$ avec $\abs{\alpha} \leq k$, la fonction $\partial_\alpha f$ s'étend en une fonction continue sur $K$.
+
+    L'espace $\mathscr{C}^k(K)$ des fonctions de classe $\mathscr{C}^k$ sur $K$ est un espace de Banach pour la norme $$\norm{f}_{\mathscr{C}^k} = \sum_{\abs{\alpha} \leq k} \norm{\partial_\alpha f}_{\infty}.$$
+\end{exem}
 
 \begin{prop}
     Si $X$ et $Y$ sont deux espaces de Banach, alors $X\times Y$ et $\mathscr{L}_c(X, Y)$ aussi. En particulier, $X' = \mathscr{L}_c(X, \R)$, le dual (topologique) de $X$, est un espace de Banach.
@@ -162,6 +172,8 @@ Soit $(X, d)$ un espace métrique.
     $$\ell^p(\N) = \left\{ x_n \in \R^{\N} \mid \sum \abs{x_n}^p < \infty \right\}$$
     est complet. 
 \end{exem}
+
+\subsection{Résultats fondamentaux \cite{Li}}
 
 \begin{theo}[Banach-Steinhaus]
     Soit $X$ un espace de Banach et $Y$ un espace vectoriel normé. Soit $(T_i)_{i\in I}$ une famille d'applications linéaires continues de $X$ dans $Y$. Alors :
@@ -180,16 +192,167 @@ Soit $(X, d)$ un espace métrique.
     Soient $X$ et $Y$ deux espaces de Banach. Une application linéaire $T : X\to Y$ est continue si et seulement si son graphe $$\Gamma(T) = \{ (x, Tx) \in X\times Y \mid x\in X \}$$est fermé dans $X\times Y$.
 \end{theo}
 
-\subsection{Rappels d'analyse de Fourier \cite{Li}}
+\subsection{Applications à l'analyse de Fourier \cite{Rudin}}
 
-\subsection{Applications de la théorie des espaces de Banach à l'analyse de Fourier \cite{Rudin}}
+\begin{defi}[série de Fourier]
+    Soit $f \in C(\mathbb{T})$. Pour $n  \in \Z$, on définit le coefficient de Fourier $$\hat{f}(n) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) e^{-i n t} \, \dd t$$
+\end{defi}
 
-\section{Espaces de Hilbert \cite{Li}}
+\begin{prop}[noyau de Dirichlet]
+    On pose $$D_n(t) = \sum_{k = -n}^n e^{ikt} = \frac{\sin((n+1/2)t)}{\sin(t/2)}.$$
+    Alors la somme partielle $$S_n f = \sum_{\abs{k} \leq n} \hat{f}(k) e^{ikt}$$
+    est obtenue par convolution : $S_n f = D_n \star f$.
+\end{prop}
 
-\subsection{Projection sur un convexe fermé et conséquences}
+\begin{appl}
+    L'ensemble des fonctions $f \in C(\mathbb{T})$ tel que $S_n f(0) \not\to f(0)$ est dense dans $C(\mathbb{T})$.
+\end{appl}
 
-\subsection{Compacité faible et applications}
+\begin{prop}[transformée de Fourier]
+    Si $f \in L^1(\R)$, on définit $$\mathscr{F}(f)(x) = \frac{1}{2\pi}\int_{\R} f(t) e^{-ixt} \, \dd t.$$
+    Cela définit une application linéaire continue $\mathscr{F} : L^1(\R) \to \mathscr{C}_0(\R)$, et par restriction $\mathscr{F} : L^1(\R) \cap L^2(\R) \to L^2(\R) \cap \mathscr{C}_0(\R)$. Elle s'étend en une unique application linéaire continue $$\mathscr{F} : L^2(\R) \to L^2(\R)$$
+    qui est une isométrie bijective.
+\end{prop}
 
-\nocite{IPdev}
+\begin{appl}
+    L'application $\mathscr{F} : L^1(\R) \to \mathscr{C}_0(\R)$ n'est pas bijective.
+\end{appl}
+
+\section{Espaces de Hilbert}
+
+\subsection{Exemples d'espaces de Hilbert}
+
+\begin{prop}[Cauchy-Schwarz, Minkowski]
+    Soit $\langle \cdot, \cdot \rangle$ un produit scalaire sur un espace vectoriel $H$. On note $$\norm{x} = \sqrt{\langle x, x \rangle}.$$
+    Alors pour tous $x,y \in H$, $\abs{\langle x, y \rangle} \leq \norm{x} \norm{y}$. On montre ainsi que $\norm{\cdot}$ est bien une norme : $$\norm{x + y} \leq \norm{x} +\norm{y}.$$
+\end{prop}
+
+\begin{defi}
+    Un espace de Hilbert est un espace de Banach dont la norme est issue d'un produit scalaire.
+\end{defi}
+
+\begin{exem}
+    Soit $(\Omega, \mu)$ un espace mesuré. $L^2(\Omega, \mu)$ est un espace de Hilbert.
+\end{exem}
+
+\begin{exem}
+    Soit $U \subset \C$ un ouvert. L'espace de Bergman $$B^2(U) = \{f \in L^2(U) \mid f \text{ holomorphe}\}$$est fermé dans $L^2(U)$ donc un espace de Hilbert.
+\end{exem}
+
+\begin{exem}
+    Soient $f,g \in L^2(\mathbb{T}^d)$ et $s \geq 0$. On définit le produit scalaire $H^s$ $$\langle f, g\rangle_{H^s} = \sum_{\xi \in \Z^d} (1 + \norm{\xi}^2)^s \hat{f}(\xi) \ol{\hat{g}(\xi)} \qquad \norm{f}^2_{H^s} = \sum_{\xi \in \Z^d} (1 + \norm{\xi}^2)^s \left\lvert \widehat{f}(\xi) \right\rvert^2$$
+    On note $$H^s(\mathbb{T}^d) = \{f\in L^2(\mathbb{T}^d) \mid \norm{f}_{H^s} < \infty\}$$
+    Il s'agit d'un espace de Hilbert pour le produit scalaire $H^s$.
+\end{exem}
+
+\begin{defi}
+    Soient $f,g \in L^2(\mathbb{T}^d)$. Soit $\alpha \in \N^d$. On dit que $g = \partial_\alpha f$ au sens faible quand pour toute fonction lisse $\phi : \mathbb{T}^d \to \R$ : $$\int_{\mathbb{T}^d} g \phi = \int_{\mathbb{T}^d} f \partial_{\alpha} \phi.$$
+\end{defi}
+
+\begin{rema}
+    La dérivée au sens faible $\partial_\alpha f$, quand elle existe, est unique.
+\end{rema}
+
+\begin{prop}
+    Soit $k\geq 0$ et $f \in L^2(\mathbb{T}^d)$. Alors $f \in H^k(\mathbb{T}^d)$ si et seulement si pour tout $\alpha$ avec $\abs{\alpha} \leq k$, la dérivée faible $\partial_\alpha f$ existe.
+\end{prop}
+
+\subsection{Projection sur un convexe fermé et conséquences \cite{Li}}
+
+Soit $H$ un espace de Hilbert.
+
+\begin{theo}
+    Soit $C$ une partie convexe fermée de $H$. Alors pour tout $x \in H$ il existe un unique $y \in C$ tel que $$\norm{x - y} = d(x,C).$$
+    Il s'agit de l'unique $y \in C$ tel que $$\forall z \in C, \mathrm{Re} \langle x- y, z-y \rangle \leq 0.$$
+    On note $y=P_C(x)$.
+\end{theo}
+
+\begin{prop}
+    L'appplication $P_C : H \to C$ est 1-lipschitzienne donc continue.
+\end{prop}
+
+\begin{theo}
+    Soit $F \subset H$ un sous-espace vectoriel fermé. Alors on a la somme directe $$H = F \oplus F^\bot$$
+    et la projection sur $F$ parallélement à $F^\bot$ est la projection $P_F$ sur le convexe fermé $F$ : en particulier elle est continue. 
+\end{theo}
+
+\begin{coro}
+    Soit $F \subset H$ un sous-espace vectoriel. Alors $F^{\bot \bot} = \ol{F}$. En particulier $F$ est dense si et seulement si $F^\bot = \{0\}$. 
+\end{coro}
+
+\begin{theo}[représentation de Riesz]
+    Soit $\phi \in H^\star$. Il existe $a \in H$ tel que pour tout $x\in H$, $$\phi(x) = \langle x, a\rangle.$$
+    Donc l'application $a \mapsto \langle \cdot, a \rangle$ est une isométrie bijective entre $H$ et son dual. 
+\end{theo}
+
+\subsection{Compacité faible et analyse convexe \cite{Allaire}}
+
+Soit $H$ un espace de Hilbert.
+
+\begin{defi}
+    On dit que la suite $(x_n) \in H^{\N}$ converge faiblement vers $x\in H$ quand pour tout $y \in H$, $\langle x_n, y \rangle \to \langle x, y \rangle$.
+\end{defi}
+
+\begin{theo}[Banach-Alaoglu]
+    De toute suite $(x_n) \in H^{\N}$ bornée, on peut extraire une suite $(x_{\phi(n)})$ qui converge faiblement. 
+\end{theo}
+
+\begin{coro}
+    Soit $J : H \to \R$ convexe, continue et coercive : pour toute suite $(x_n) \in H^{\N}$ avec $\norm{x_n} \to +\infty$, on a $J(x_n) \to +\infty$. Alors il existe $x_* \in H$ tel que $J(x_*) = \inf_{x \in H} J(x).$
+\end{coro}
+
+\begin{rema}
+    On peut obtenir l'unicité et une estimation de l'erreur, propriétés précieuses en pratique, en supposant que $J$ est $\alpha$-convexe : pour $\alpha > 0$, on suppose que pour tous $x,y \in H$ : $$J\left( \frac{x+y}{2} \right) \leq \frac{J(x) + J(y)}{2} - \frac{\alpha}{8} \norm{x - y}^2$$
+    C'est le cas en particulier si $J$ est deux fois différentiable et que pour tous $x, h \in H$, $\mathrm{d}^2_xJ(h,h) \geq \alpha \norm{h}^2$.
+    Alors le minimiseur $x_*$ est unique et on a $$\norm{x - x_*}^2 \leq \frac{4}{\alpha}(J(x) - J(x_*)).$$
+\end{rema}
+
+\newpage
+
 \printbibliography
+
+\section*{Remarques}
+
+\newpage
+
+\section*{Métaplan $\heartsuit$}
+
+\begin{enumerate}
+    \item Espaces métriques complets
+    \begin{enumerate}
+        \item Premières propriétés
+        
+        \emph{Définition. De quoi montrer qu'un EVNDF est complet. New from old : parties, espaces de fonctions, complétion.}
+        \item Théorème du point fixe et applications
+        
+        \emph{Énoncé. Deux applications, toutes les deux dans le Demailly : inversion locale, Cauchy-Lipschitz.}
+        \item Théorème de Baire et applications
+    
+        \emph{Énoncé et best-of du Gourdon.}
+    \end{enumerate}
+    \item Espaces de Banach
+    \begin{enumerate}
+        \item Exemples
+
+        \emph{Définition. Exemples : fonctions avec arrivée dans un Banach, fonctions Ck, linéaires, Lp!!}
+        \item Résultats fondamentaux
+
+        \emph{Le triptyque dont DEV1 :-)}
+        \item Baire pour Fourier
+        
+        \emph{Séries : définition, Dirichlet, app DEV1. Transformée : item crash course, non-surjectivité.}
+    \end{enumerate}
+    \item Espaces de Hilbert 
+    \begin{enumerate}
+        \item Exemples
+
+        \emph{Définition. L2, Bergman, Sobolev du tore.}
+        \item Projection et application
+        
+        \emph{Cauchy-Schwarz, définition. Recopier Li : convexe fermé, sev, critère de densité, Riesz.}
+        \item Optimisation convexe
+        
+        \emph{DEV2, remarque Allaire pour l'effectivité.}
+    \end{enumerate}
+\end{enumerate}
 \end{document}
